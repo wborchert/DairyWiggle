@@ -1,3 +1,4 @@
+// @BC: Simple, clear, well-implemented super and subclasses. Nicely done!
 import java.math.*;
 public abstract class Employee {
 
@@ -24,7 +25,7 @@ private double totalPaymentToDate;
 	public double getEffectivenessMultiplier() {
 		return effectivenessMultiplier;
 	}
-	
+	// @BC: Looking at the way your subclasses use this method, would it be worth consiering changing/ adding mutator methods?
 	public void setEffectivenessMultiplier(double mult) {
 		effectivenessMultiplier = mult;
 	}

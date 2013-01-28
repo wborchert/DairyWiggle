@@ -2,6 +2,7 @@ import java.math.*;
 public class Simulator {
 
 private Employee[] employees;
+// @BC: Make sure to save initialization for methods and constructors. We'll talk more about this convention (and breaking it) soon
 private int numEmployees = 6;
 
 	public static void main(String[] args) {
@@ -25,12 +26,15 @@ private int numEmployees = 6;
 	}
 	
 	public void passDay(int daynum) {
+		// @BC: Just a thought on your design -- if you were to revisit this project and explore developing it even further
+		//			I'd suggest you start by poking around with the following line
 		int shakesserved = (int)(Math.random() * 150);
 		for(int j = 0; j < shakesserved; j++) {
 			for(int i = 0; i < numEmployees; i++) {
 				employees[i].work();
 			}
 		}
+		// @BC: Great addition to the project! Nicely done
 		switch (daynum) {
 			case 1: System.out.println(shakesserved + " shakes were served on Monday!");
 					break;
@@ -52,6 +56,8 @@ private int numEmployees = 6;
 		}
 		for(int i = 0; i < numEmployees; i++) {
 			employees[i].earnPaycheck();
+			// @BC: Breaking down passYear() into these helper methods gives you room for this additional reporting and 
+			//			adds to the clarity of your code. Nicely done!
 			System.out.println("Week " + weeknum + " report for employee " + (i+1) + ": "); 
 			System.out.println(employees[i]);
 			employees[i].setEffectivenessMultiplier(1);
@@ -72,6 +78,7 @@ private int numEmployees = 6;
 	}
 	
 	public void passYear() {
+		// @BC: Nice way to break this down. Legible, manageable, and avoids deeply nested for loops.
 		for(int i = 0; i < 12; i++) {
 			passMonth(i + 1);
 		}
@@ -90,6 +97,7 @@ private int numEmployees = 6;
 		double moo = (int)(Math.random() * 300000) + 500000;
 		BigDecimal profit = new BigDecimal(moo + "");
 		profit = profit.setScale(2, RoundingMode.HALF_UP);
+		// @BC: Millionaire's milkshakes. They must taste good, right??
 		System.out.println("It's a good thing you made $" + profit + " off of your overpriced milkshakes!");
 	}
 	
@@ -100,6 +108,7 @@ private int numEmployees = 6;
 		mount = mount.setScale(2, RoundingMode.HALF_UP);
 		employees[i].earnBonus(amount);
 		System.out.println("");
+		// @BC: Very elegantly done!
 		System.out.println("Employee " + (i+1) + " won the line dancing competition this month and"
 		+ " recieved a prize of $" + mount + "!");
 		System.out.println("");
